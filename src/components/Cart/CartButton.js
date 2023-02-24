@@ -5,7 +5,13 @@ import { useSelector } from 'react-redux';
 
 const CartButton = (props) => {
 
-  var count = useSelector((state)=>state.cart.cartCount)
+  var cartItems = useSelector((state)=>state.cart.items)
+  var count = 0;
+ 
+  cartItems.map((item)=>(count +=item.quantity));
+  
+ // console.log("cart button",cartItems[0].quantity);
+
   const dispatch = useDispatch();
   const Cartshowhandler = (e) =>{
     e.preventDefault();

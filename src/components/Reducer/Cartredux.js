@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+ 
 import { DATA } from "../DATA";
 
 const cartRedux = createSlice({
@@ -44,8 +44,11 @@ const cartRedux = createSlice({
       }
       state.cartCount--;
     },
+    refresh: (state,action) =>{
+        state.items = action.payload;
+    }
   },
 });
 
-export const { change, add, remove } = cartRedux.actions;
+export const { change, add, remove,refresh } = cartRedux.actions;
 export default cartRedux.reducer;

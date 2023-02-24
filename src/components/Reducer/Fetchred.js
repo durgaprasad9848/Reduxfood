@@ -5,11 +5,13 @@ const Fetchred = createSlice({
     name:'fetchstatus',
     initialState: {
         status:[],
+        isVisible:false,
     },
     reducers:{
     changestatus : (state,action)=>{
         state.status = action.payload;
         console.log(state.status);
+        state.isVisible=true;
     },
 },
 });
