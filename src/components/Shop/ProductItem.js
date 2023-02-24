@@ -1,11 +1,20 @@
 import Card from '../UI/Card';
 import classes from './ProductItem.module.css';
-
+import { add,remove } from '../Reducer/Cartredux';
+import { useDispatch } from 'react-redux';
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const dispatch = useDispatch();
+  const { title, price, description,id } = props;
 
+
+  const handleAddToCart = (product) => {
+  
+    dispatch(add(product));
+  };
+
+ console.log("pid",id);
   return (
-    <li className={classes.item}>
+    <li className={classes.item} id={id}>
       <Card>
         <header>
           <h3>{title}</h3>
@@ -13,7 +22,7 @@ const ProductItem = (props) => {
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
-          <button>Add to Cart</button>
+          <button onClick={()=>{handleAddToCart({title:props.title,price:props.price,description:props.description,id:id})}}>Add to Cart</button>
         </div>
       </Card>
     </li>
